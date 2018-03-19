@@ -36,7 +36,8 @@ const somedata = {
 (async () => {
   easyJose.init();
   const { private_key, public_key } = await easyJose.generateKeys();
-  console.log(keys);
+  console.log(private_key);
+  console.log(public_key);
 
   const encrypted = await easyJose.encryptContent(public_key, somedata);
   console.log(encrypted);

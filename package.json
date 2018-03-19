@@ -18,6 +18,9 @@
     "babel-register": "^6.24.1"
   },
   "dependencies": {
+    "es6-promise": "^4.2.4",
+    "fast-text-encoding": "^1.0.0",
+    "node-jose": "^0.11.0",
     "urlsafe-base64": "^1.0.0"
   }
 }

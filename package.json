@@ -1,0 +1,20 @@
+{
+  "name": "easy-jose",
+  "version": "1.0.0",
+  "description": "Straightforward encryption/decryption utility based on node-jose by Cisco",
+  "main": "./lib/index.js",
+  "module": "./src/index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "prepublishOnly": "npm run build",
+    "test": "ava"
+  },
+  "author": "Fernan de Dios",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "ava": "^0.21.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-register": "^6.24.1"
+  }
+}

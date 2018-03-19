@@ -1,0 +1,18 @@
+"babel": {
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ]
+},
+"ava": {
+  "require": [
+    "babel-register"
+  ],
+  "babel": "inherit"
+}

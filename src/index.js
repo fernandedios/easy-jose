@@ -10,7 +10,7 @@ const easyJose = (kty = 'RSA', size = 2048) => {
 
       // we only encode public key
       if (isEncoded) {
-        let public_key = URLSafeBase64.encode(Buffer.from(JSON.stringify(result.toJSON()), 'utf8'));
+        let public_key = encode(result.toJSON());
 
         // for compatibility with other base64 encoders like python's
         if (isPadded) {
@@ -26,13 +26,13 @@ const easyJose = (kty = 'RSA', size = 2048) => {
     catch (err) throw new Error(err);
   }
 
-  async function encryptContent(public_key, payload, isEncoded) {
+  async function encryptContent(public_key, payload, isKeyEncoded = false) {
     if (!payload) throw new Error('Missing encrypted payload');
-    
+
     let key = public_key;
     // is public key base64 encoded
-    if (isEncoded) {
-      key = JSON.parse(URLSafeBase64.decode(public_key).toString('utf8'));
+    if (isKeyEncoded) {
+      key = decode(public_key));
     }
 
     try {
@@ -44,6 +44,30 @@ const easyJose = (kty = 'RSA', size = 2048) => {
       return data;
     }
     catch (err) throw new Error(err);
+  }
+
+  async function decryptContent(keystore, payload, isPayloadEncoded = false) {
+    if (!payload) throw new Error('Missing encrypted payload');
+
+    let enc = payload;
+    // is payload base64 encoded
+    if (isPayloadEncoded) {
+      enc = decode(payload);
+    }
+
+    try {
+      const data = await jose.JWE.createDecrypt(keystore).decrypt(enc);
+      return data;
+    }
+    catch (err) throw new Error(err);
+  }
+
+  function encode(payload) {
+    return URLSafeBase64.encode(Buffer.from(JSON.stringify(payload), 'utf8'));
+  }
+
+  function decode(payload) {
+    return JSON.parse(URLSafeBase64.decode(payload).toString('utf8'));
   }
 
   function getKeystore() {

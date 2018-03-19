@@ -4,6 +4,7 @@
   "description": "Straightforward encryption/decryption utility based on node-jose by Cisco",
   "main": "./lib/index",
   "scripts": {
+    "prepare": "babel lib/index.mjs --out-file lib/index.js && babel lib/index.js --minified --no-comments --source-maps -o lib/index.min.js",
     "test": "jest"
   },
   "author": "Fernan de Dios",
@@ -13,6 +14,8 @@
     "url": "git@github.com:fernandedios/easy-jose.git"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "jest": "^22.4.2"
   },
   "dependencies": {

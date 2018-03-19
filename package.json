@@ -16,5 +16,8 @@
     "ava": "^0.21.0",
     "babel-preset-env": "^1.5.1",
     "babel-register": "^6.24.1"
+  },
+  "dependencies": {
+    "urlsafe-base64": "^1.0.0"
   }
 }

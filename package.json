@@ -1,6 +1,6 @@
 {
   "name": "easy-jose",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Straightforward encryption/decryption utility based on node-jose by Cisco",
   "main": "./lib/index",
   "scripts": {

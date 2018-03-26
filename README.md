@@ -1,6 +1,9 @@
 easy-jose
 =========
 
+[![Status](https://travis-ci.org/fernandedios/easy-jose.svg?branch=master)](https://travis-ci.org/fernandedios/easy-jose)
+[![npm version](https://img.shields.io/npm/v/easy-jose.png)](https://npmjs.org/package/easy-jose "View this project on npm")
+
 > Javascript Object Signing and Encryption standard
 
 Straightforward encryption/decryption utility based on [node-jose] by Cisco

@@ -26,9 +26,56 @@ Require the library, then initialize.
 ```js
 const easyJose = require('easy-jose');
 easyJose.init();
+
 ```
 
-### Example Code
+### Generating Keys: generateKeys()
+Returns an object with public_key and private_key
+
+Optional Arguments:
+- kty: key type, default is "RSA"
+- size: size in bits, default is 2048
+- isEncoded: boolean, base64 encode the public key, default is false
+- isPadded: boolean, add padding to base64 encoding, default is false
+
+Example:
+```js
+const keys = easyJose.generateKeys("EC", 4096);
+
+```
+
+### Encrypting Content: encryptContent()
+
+Required Arguments:
+- public_key
+- payload: data to encrypt
+
+Optional Argument
+- isKeyEncoded: boolean, tell easyJose if you're using a base64 encoded public_key
+
+Example:
+```js
+const encrypted = easyJose.encryptContent(public_key, payload);
+
+```
+
+### Decrypting Content: decryptContent()
+
+Required Arguments:
+- private_key
+- payload: data to decrypt
+
+Optional Argument
+- isPayloadEncoded: boolean, tell easyJose if you're using a base64 encoded payload
+
+Example:
+```js
+const decrypted = easyJose.decryptContent(private_key, encrypted);
+
+```
+
+
+### Example Implementation
 
 ```js
 const easyJose = require('easy-jose');
@@ -50,6 +97,36 @@ const somedata = {
 })();
 ```
 
+Utilities
+------------
+
+### Base64 Encoder
+
+```js
+const encoded = easyJose.encode(raw);
+
+```
+
+### Base64 Decoder
+
+```js
+const decoded = easyJose.decode(base64EncodedString);
+
+```
+
+### Array Buffer converter
+
+```js
+const u8a = easyJose.convertToU8A(data);
+
+```
+
+### Array Buffer Decoder
+
+```js
+const data = easyJose.convertU8A(arrayBufferData);
+
+```
 
 Thanks
 ------

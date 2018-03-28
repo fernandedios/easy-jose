@@ -5,7 +5,7 @@
   "main": "./lib/index",
   "scripts": {
     "prepare": "babel lib/index.mjs --out-file lib/index.js && babel lib/index.js --minified --no-comments --source-maps -o lib/index.min.js",
-    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha lib/**/*.test.js --timeout 5000",
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha lib/**/*.test.js --timeout 6000",
     "test-watch": "nodemon --exec 'npm test'"
   },
   "author": "Fernan de Dios",

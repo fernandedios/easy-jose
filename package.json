@@ -1,29 +1,54 @@
 {
   "name": "easy-jose",
-  "version": "1.0.4",
-  "description": "Straightforward encryption/decryption utility based on node-jose by Cisco",
-  "main": "./lib/index",
-  "scripts": {
-    "prepare": "babel lib/index.mjs --out-file lib/index.js && babel lib/index.js --minified --no-comments --source-maps -o lib/index.min.js",
-    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha lib/**/*.test.js --timeout 6000",
-    "test-watch": "nodemon --exec 'npm test'"
+  "version": "2.0.0",
+  "description": "Straightforward JOSE helpers: encrypt (JWE), sign (JWS) and issue JWTs with a few function calls. Built on jose; runs in Node.js, Deno, Bun, browsers and edge runtimes.",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
   },
+  "files": [
+    "src",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "test": "node --test \"test/*.test.js\" \"test/*.test.cjs\"",
+    "typecheck": "tsc -p tsconfig.json",
+    "check": "npm test && npm run typecheck"
+  },
+  "keywords": [
+    "jose",
+    "jwe",
+    "jws",
+    "jwt",
+    "jwk",
+    "encryption",
+    "signing",
+    "webcrypto"
+  ],
   "author": "Fernan de Dios",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:fernandedios/easy-jose.git"
+    "url": "git+https://github.com/fernandedios/easy-jose.git"
   },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "expect": "^23.0.0-alpha.0",
-    "mocha": "^5.0.4"
+  "homepage": "https://github.com/fernandedios/easy-jose#readme",
+  "bugs": {
+    "url": "https://github.com/fernandedios/easy-jose/issues"
   },
   "dependencies": {
-    "es6-promise": "^4.2.4",
-    "fast-text-encoding": "^1.0.0",
-    "node-jose": "^0.11.0",
-    "urlsafe-base64": "^1.0.0"
+    "jose": "^6.2.18"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
   }
 }
